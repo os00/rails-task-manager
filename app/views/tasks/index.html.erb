@@ -1,0 +1,25 @@
+<div class="row">
+<div class="col-1">
+</div>
+<div class="col-5">
+<h2>My tasks</h2>
+<ul class="list-group">
+<% @tasks.each do |task| %>
+  <li class="list-group-item">
+    <% if task.completed %>
+      <i class="far fa-check-square pr-3"></i>
+    <% else %>
+      <i class="far fa-square pr-3"></i>
+    <% end %>
+    <%= link_to task.title, task_path(task.id) %>
+    <%= link_to task_path(task.id), method: :delete, data: { confirm: "Are you sure?" } do %>
+      <i class="far fa-trash-alt pl-1"></i>
+    <% end %>
+  </li>
+<% end %>
+</ul>
+<div>
+  <%= link_to 'Add a new task', new_task_path, class: "btn btn-primary mt-2" %>
+</div>
+</div>
+</div>
